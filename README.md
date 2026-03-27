@@ -1,4 +1,4 @@
-# 🥤 CMU Vending Map
+# CMU Vending Map
 
 > A community-maintained map of vending machines on Carnegie Mellon University's Pittsburgh campus.
 
@@ -16,11 +16,11 @@ Born from the r/cmu posts asking "where are the vending machines?" — this is a
 
 ## Features
 
-- 🗺️ Interactive dark-themed map (OpenStreetMap + CARTO tiles, no API key needed)
-- 🔍 Search by building or floor
-- 🏷️ Filter by type: Snacks, Drinks, Combo, Healthy
-- 📊 Status indicators: Operational / Limited stock / Unknown
-- ✏️ Every popup links directly to the GitHub edit page
+- Interactive dark-themed map (OpenStreetMap + CARTO tiles, no API key needed)
+- Search by building or floor
+- Filter by type: Snacks, Drinks, Combo, Healthy
+- Status indicators: Operational / Limited stock / Unknown
+- Every popup links directly to the GitHub edit page
 
 ## Contributing
 
