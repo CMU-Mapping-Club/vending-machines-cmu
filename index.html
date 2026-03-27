@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMU Vending Map</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥤</text></svg>">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+    :root {
+      --cmu-red: #C41230;
+      --cmu-dark: #1a1a1a;
+      --cmu-gray: #f5f4f0;
+      --cmu-border: #e0ddd6;
+      --snack: #f59e0b;
+      --drink: #3b82f6;
+      --combo: #8b5cf6;
+      --healthy: #10b981;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cmu-dark);
+      color: #fff;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--cmu-red);
+      padding: 0 20px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 3px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+    .logo-text {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .logo-sub {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-left: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.2); }
+
+    .btn-github {
+      background: #24292e;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn-github:hover { background: #32383e; }
+
+    /* ── MAIN LAYOUT ── */
+    .main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 300px;
+      flex-shrink: 0;
+      background: #111;
+      border-right: 1px solid #2a2a2a;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .sidebar-header {
+      padding: 16px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 0 12px;
+      height: 38px;
+    }
+    .search-box input {
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      flex: 1;
+      min-width: 0;
+    }
+    .search-box input::placeholder { color: #555; }
+
+    .filter-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: all 0.15s;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .filter-chip.all   { border-color: #555; color: #aaa; }
+    .filter-chip.snack { border-color: var(--snack); color: var(--snack); }
+    .filter-chip.drink { border-color: var(--drink); color: var(--drink); }
+    .filter-chip.combo { border-color: var(--combo); color: var(--combo); }
+    .filter-chip.healthy { border-color: var(--healthy); color: var(--healthy); }
+    .filter-chip.active { color: #fff; }
+    .filter-chip.all.active   { background: #555; border-color: #555; }
+    .filter-chip.snack.active { background: var(--snack); border-color: var(--snack); }
+    .filter-chip.drink.active { background: var(--drink); border-color: var(--drink); }
+    .filter-chip.combo.active { background: var(--combo); border-color: var(--combo); }
+    .filter-chip.healthy.active { background: var(--healthy); border-color: var(--healthy); }
+
+    .sidebar-count {
+      padding: 10px 16px 6px;
+      font-size: 11px;
+      color: #555;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .machine-list {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 12px;
+    }
+    .machine-list::-webkit-scrollbar { width: 4px; }
+    .machine-list::-webkit-scrollbar-track { background: #111; }
+    .machine-list::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+    .machine-card {
+      margin: 4px 10px;
+      padding: 12px;
+      background: #1a1a1a;
+      border: 1px solid #222;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .machine-card:hover {
+      background: #222;
+      border-color: #333;
+    }
+    .machine-card.active {
+      border-color: var(--cmu-red);
+      background: rgba(196, 18, 48, 0.08);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-name {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .type-badge {
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .type-badge.snack  { background: rgba(245,158,11,0.2);  color: var(--snack); }
+    .type-badge.drink  { background: rgba(59,130,246,0.2);  color: var(--drink); }
+    .type-badge.combo  { background: rgba(139,92,246,0.2);  color: var(--combo); }
+    .type-badge.healthy { background: rgba(16,185,129,0.2); color: var(--healthy); }
+
+    .card-location {
+      font-size: 11px;
+      color: #666;
+      margin-top: 4px;
+    }
+    .card-status {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+      font-size: 10px;
+    }
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .status-dot.operational { background: #22c55e; }
+    .status-dot.limited     { background: var(--snack); }
+    .status-dot.unknown     { background: #555; }
+
+    .sidebar-footer {
+      padding: 12px 16px;
+      border-top: 1px solid #1e1e1e;
+      background: #0d0d0d;
+    }
+    .contribute-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px;
+      background: rgba(196,18,48,0.15);
+      border: 1px dashed rgba(196,18,48,0.4);
+      border-radius: 8px;
+      color: #ff6b7a;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .contribute-btn:hover {
+      background: rgba(196,18,48,0.25);
+      border-color: rgba(196,18,48,0.7);
+    }
+
+    /* ── MAP ── */
+    #map {
+      flex: 1;
+      background: #1a1a2e;
+    }
+
+    /* Leaflet popup custom style */
+    .leaflet-popup-content-wrapper {
+      background: #1e1e1e !important;
+      color: #fff !important;
+      border: 1px solid #333 !important;
+      border-radius: 10px !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+    }
+    .leaflet-popup-tip { background: #1e1e1e !important; }
+    .leaflet-popup-content { margin: 14px 16px !important; min-width: 200px; }
+    .popup-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .popup-loc  { font-size: 12px; color: #888; margin-bottom: 8px; }
+    .popup-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .popup-hours { font-size: 11px; color: #aaa; margin-top: 6px; }
+    .popup-gh-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 10px; font-size: 11px; color: #ff6b7a;
+      text-decoration: none; cursor: pointer;
+    }
+    .popup-gh-link:hover { text-decoration: underline; }
+
+    /* Custom marker */
+    .vending-marker {
+      background: var(--cmu-dark);
+      border: 2px solid #fff;
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      transition: transform 0.15s;
+    }
+    .vending-marker:hover { transform: scale(1.2); }
+    .vending-marker.snack  { border-color: var(--snack); }
+    .vending-marker.drink  { border-color: var(--drink); }
+    .vending-marker.combo  { border-color: var(--combo); }
+    .vending-marker.healthy { border-color: var(--healthy); }
+
+    /* ── LEGEND ── */
+    .map-legend {
+      position: absolute;
+      bottom: 28px;
+      right: 12px;
+      z-index: 999;
+      background: rgba(17,17,17,0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 11px;
+    }
+    .legend-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 6px;
+      margin-bottom: 5px; color: #bbb;
+    }
+    .legend-dot {
+      width: 10px; height: 10px; border-radius: 50%; border: 2px solid;
+      flex-shrink: 0;
+    }
+    .legend-dot.snack   { border-color: var(--snack);   background: rgba(245,158,11,0.2); }
+    .legend-dot.drink   { border-color: var(--drink);   background: rgba(59,130,246,0.2); }
+    .legend-dot.combo   { border-color: var(--combo);   background: rgba(139,92,246,0.2); }
+    .legend-dot.healthy { border-color: var(--healthy); background: rgba(16,185,129,0.2); }
+
+    /* Last updated badge */
+    .last-updated {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 999;
+      background: rgba(17,17,17,0.88);
+      backdrop-filter: blur(6px);
+      border: 1px solid #2a2a2a;
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 10px;
+      font-family: 'Space Mono', monospace;
+      color: #555;
+      letter-spacing: 0.04em;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .sidebar { width: 100%; position: absolute; bottom: 0; z-index: 900; max-height: 45vh; border-right: none; border-top: 1px solid #2a2a2a; }
+      .main { flex-direction: column; }
+      #map { height: 55dvh; }
+      .logo-sub, .btn-outline { display: none; }
+      .map-legend { bottom: 47vh; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <span class="logo-mark">CMU</span>
+    <div>
+      <span class="logo-text">Vending Map</span>
+      <span class="logo-sub">Community-maintained</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn btn-outline" onclick="window.open('https://github.com/YOUR_USERNAME/cmu-vending-map/blob/main/vending-machines.json')">
+      ✏️ Suggest Edit
+    </button>
+    <a class="btn btn-github" href="https://github.com/YOUR_USERNAME/cmu-vending-map" target="_blank">
+      ⭐ GitHub
+    </a>
+  </div>
+</header>
+
+<div class="main">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="search-box">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <circle cx="7" cy="7" r="5.5" stroke="#555" stroke-width="1.5"/>
+          <path d="M11 11l3 3" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="search" placeholder="Search building or location…">
+      </div>
+      <div class="filter-row">
+        <span class="filter-chip all active" data-type="all">All</span>
+        <span class="filter-chip snack" data-type="snack">Snacks</span>
+        <span class="filter-chip drink" data-type="drink">Drinks</span>
+        <span class="filter-chip combo" data-type="combo">Combo</span>
+        <span class="filter-chip healthy" data-type="healthy">Healthy</span>
+      </div>
+    </div>
+
+    <div class="sidebar-count" id="count-label">Loading…</div>
+
+    <div class="machine-list" id="machine-list"></div>
+
+    <div class="sidebar-footer">
+      <a class="contribute-btn"
+         href="https://github.com/YOUR_USERNAME/cmu-vending-map/blob/main/CONTRIBUTING.md"
+         target="_blank">
+        ➕ Know a machine not on the map? Add it!
+      </a>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div style="position:relative; flex:1; display:flex;">
+    <div id="map"></div>
+
+    <div class="last-updated" id="last-updated">Updated: —</div>
+
+    <div class="map-legend">
+      <div class="legend-title">Machine type</div>
+      <div class="legend-item"><span class="legend-dot snack"></span>Snacks</div>
+      <div class="legend-item"><span class="legend-dot drink"></span>Drinks</div>
+      <div class="legend-item"><span class="legend-dot combo"></span>Combo</div>
+      <div class="legend-item"><span class="legend-dot healthy"></span>Healthy</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ──────────────────────────────────────────────
+// Fetch the data file (same origin on GH Pages)
+// ──────────────────────────────────────────────
+const DATA_URL = './vending-machines.json';
+
+const typeEmoji = { snack:'🍫', drink:'🥤', combo:'🎰', healthy:'🥗' };
+
+// Initialize Leaflet with CartoDB dark tiles (free, no API key)
+const map = L.map('map', { zoomControl: false }).setView([40.4433, -79.9436], 16);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  subdomains: 'abcd', maxZoom: 19
+}).addTo(map);
+L.control.zoom({ position: 'topleft' }).addTo(map);
+
+let allMachines = [];
+let markers = {};
+let activeFilter = 'all';
+let activeCard = null;
+
+// ── Load data ──
+async function loadData() {
+  const res = await fetch(DATA_URL);
+  const data = await res.json();
+  allMachines = data.machines;
+  document.getElementById('last-updated').textContent = 'Updated: ' + (data.lastUpdated || 'unknown');
+  render();
+}
+
+// ── Create custom marker ──
+function makeIcon(type) {
+  return L.divIcon({
+    className: '',
+    html: `<div class="vending-marker ${type}">${typeEmoji[type] || '🏪'}</div>`,
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -18]
+  });
+}
+
+// ── Build popup HTML ──
+function popupHTML(m) {
+  const statusClass = m.status === 'operational' ? 'operational' : m.status === 'limited' ? 'limited' : 'unknown';
+  const statusText  = m.status === 'operational' ? 'Operational' : m.status === 'limited' ? 'Limited stock' : 'Unknown status';
+  return `
+    <div class="popup-name">${m.name}</div>
+    <div class="popup-loc">📍 ${m.building}${m.floor ? ', ' + m.floor : ''}</div>
+    <div class="popup-meta">
+      <span class="type-badge ${m.type}">${m.type}</span>
+      <span class="card-status">
+        <span class="status-dot ${statusClass}"></span>
+        <span style="font-size:11px;color:#888">${statusText}</span>
+      </span>
+    </div>
+    ${m.hours ? `<div class="popup-hours">🕐 ${m.hours}</div>` : ''}
+    ${m.notes ? `<div class="popup-hours" style="margin-top:4px">💬 ${m.notes}</div>` : ''}
+    <a class="popup-gh-link" href="https://github.com/YOUR_USERNAME/cmu-vending-map/blob/main/vending-machines.json" target="_blank">
+      ✏️ Edit this entry on GitHub
+    </a>
+  `;
+}
+
+// ── Render list + markers ──
+function render() {
+  const query = document.getElementById('search').value.toLowerCase();
+
+  const filtered = allMachines.filter(m => {
+    const matchType = activeFilter === 'all' || m.type === activeFilter;
+    const matchSearch = !query ||
+      m.name.toLowerCase().includes(query) ||
+      m.building.toLowerCase().includes(query) ||
+      (m.floor || '').toLowerCase().includes(query);
+    return matchType && matchSearch;
+  });
+
+  // Count
+  document.getElementById('count-label').textContent =
+    `${filtered.length} machine${filtered.length !== 1 ? 's' : ''} shown`;
+
+  // Clear old markers
+  Object.values(markers).forEach(m => map.removeLayer(m));
+  markers = {};
+
+  // List
+  const list = document.getElementById('machine-list');
+  list.innerHTML = '';
+
+  filtered.forEach(m => {
+    // Marker
+    const marker = L.marker([m.lat, m.lng], { icon: makeIcon(m.type) })
+      .addTo(map)
+      .bindPopup(popupHTML(m), { maxWidth: 260 });
+    marker.on('click', () => focusCard(m.id));
+    markers[m.id] = marker;
+
+    // Card
+    const card = document.createElement('div');
+    card.className = 'machine-card';
+    card.dataset.id = m.id;
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="card-name">${m.name}</div>
+        <span class="type-badge ${m.type}">${m.type}</span>
+      </div>
+      <div class="card-location">📍 ${m.building}${m.floor ? ' · ' + m.floor : ''}</div>
+      <div class="card-status">
+        <span class="status-dot ${m.status === 'operational' ? 'operational' : m.status === 'limited' ? 'limited' : 'unknown'}"></span>
+        <span style="color:#555;font-size:10px">${m.status === 'operational' ? 'Operational' : m.status === 'limited' ? 'Limited stock' : 'Unknown status'}</span>
+      </div>
+    `;
+    card.addEventListener('click', () => {
+      map.setView([m.lat, m.lng], 18, { animate: true });
+      markers[m.id]?.openPopup();
+      focusCard(m.id);
+    });
+    list.appendChild(card);
+  });
+}
+
+function focusCard(id) {
+  document.querySelectorAll('.machine-card').forEach(c => c.classList.remove('active'));
+  const el = document.querySelector(`.machine-card[data-id="${id}"]`);
+  if (el) {
+    el.classList.add('active');
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+// ── Filters ──
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeFilter = chip.dataset.type;
+    render();
+  });
+});
+
+// ── Search ──
+document.getElementById('search').addEventListener('input', render);
+
+// ── Go ──
+loadData().catch(err => {
+  document.getElementById('count-label').textContent = 'Error loading data';
+  console.error(err);
+});
+</script>
+</body>
+</html>

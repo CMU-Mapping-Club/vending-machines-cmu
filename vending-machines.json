@@ -1,0 +1,155 @@
+{
+  "lastUpdated": "2025-01-15",
+  "maintainers": ["r/cmu community"],
+  "machines": [
+    {
+      "id": "gh-1f",
+      "name": "Gates Hillman 1st Floor",
+      "building": "Gates Hillman Complex",
+      "floor": "1st floor, near main entrance",
+      "type": "combo",
+      "lat": 40.4437,
+      "lng": -79.9456,
+      "status": "operational",
+      "hours": "24/7",
+      "notes": "Accepts credit cards and CMU ID"
+    },
+    {
+      "id": "gh-cafe",
+      "name": "Gates Hillman Café Area",
+      "building": "Gates Hillman Complex",
+      "floor": "Ground floor, café",
+      "type": "drink",
+      "lat": 40.4435,
+      "lng": -79.9454,
+      "status": "operational",
+      "hours": "24/7",
+      "notes": "Coffee and cold drinks"
+    },
+    {
+      "id": "weh-3f",
+      "name": "Wean Hall 3rd Floor",
+      "building": "Wean Hall",
+      "floor": "3rd floor, near elevators",
+      "type": "snack",
+      "lat": 40.4431,
+      "lng": -79.9449,
+      "status": "operational",
+      "hours": "24/7"
+    },
+    {
+      "id": "weh-5f",
+      "name": "Wean Hall 5th Floor",
+      "building": "Wean Hall",
+      "floor": "5th floor",
+      "type": "combo",
+      "lat": 40.4432,
+      "lng": -79.9447,
+      "status": "limited",
+      "hours": "24/7",
+      "notes": "Restocked Mondays and Thursdays"
+    },
+    {
+      "id": "uc-main",
+      "name": "UC Lower Level",
+      "building": "University Center",
+      "floor": "Lower level, near Entropy",
+      "type": "snack",
+      "lat": 40.4446,
+      "lng": -79.9436,
+      "status": "operational",
+      "hours": "24/7"
+    },
+    {
+      "id": "uc-healthy",
+      "name": "UC Healthy Options",
+      "building": "University Center",
+      "floor": "Ground floor",
+      "type": "healthy",
+      "lat": 40.4448,
+      "lng": -79.9435,
+      "status": "operational",
+      "hours": "7am–11pm",
+      "notes": "Protein bars, nuts, low-sugar drinks"
+    },
+    {
+      "id": "doherty-b",
+      "name": "Doherty Hall Basement",
+      "building": "Doherty Hall",
+      "floor": "Basement",
+      "type": "drink",
+      "lat": 40.4428,
+      "lng": -79.9432,
+      "status": "operational",
+      "hours": "24/7"
+    },
+    {
+      "id": "doherty-2f",
+      "name": "Doherty Hall 2nd Floor",
+      "building": "Doherty Hall",
+      "floor": "2nd floor, main corridor",
+      "type": "combo",
+      "lat": 40.4426,
+      "lng": -79.9430,
+      "status": "unknown",
+      "hours": "Unknown",
+      "notes": "Last reported working Jan 2025 — please update!"
+    },
+    {
+      "id": "hh-1f",
+      "name": "Hamburg Hall Lobby",
+      "building": "Hamburg Hall",
+      "floor": "1st floor lobby",
+      "type": "drink",
+      "lat": 40.4443,
+      "lng": -79.9464,
+      "status": "operational",
+      "hours": "24/7"
+    },
+    {
+      "id": "purnell-b",
+      "name": "Purnell Basement",
+      "building": "Purnell Center",
+      "floor": "Basement",
+      "type": "snack",
+      "lat": 40.4440,
+      "lng": -79.9441,
+      "status": "operational",
+      "hours": "24/7"
+    },
+    {
+      "id": "cyert-2f",
+      "name": "Cyert Hall 2nd Floor",
+      "building": "Cyert Hall",
+      "floor": "2nd floor",
+      "type": "combo",
+      "lat": 40.4453,
+      "lng": -79.9428,
+      "status": "operational",
+      "hours": "24/7",
+      "notes": "Near the collaborative workspace"
+    },
+    {
+      "id": "nsh-atrium",
+      "name": "Newell-Simon Hall Atrium",
+      "building": "Newell-Simon Hall",
+      "floor": "Ground floor, atrium",
+      "type": "combo",
+      "lat": 40.4434,
+      "lng": -79.9460,
+      "status": "operational",
+      "hours": "24/7"
+    },
+    {
+      "id": "tepper-2f",
+      "name": "Tepper 2nd Floor",
+      "building": "Tepper School of Business",
+      "floor": "2nd floor, near study rooms",
+      "type": "healthy",
+      "lat": 40.4424,
+      "lng": -79.9421,
+      "status": "operational",
+      "hours": "7am–10pm"
+    }
+  ]
+}
