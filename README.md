@@ -2,7 +2,7 @@
 
 > A community-maintained map of vending machines on Carnegie Mellon University's Pittsburgh campus.
 
-**Live site:** [https://CMU-Mapping-Club.github.io/cmu-vending-map](https://cmu-mapping-club.github.io/vending-machines-cmu/)
+**Live site:** https://cmu-mapping-club.github.io/vending-machines-cmu/ 
 
 ---
 
