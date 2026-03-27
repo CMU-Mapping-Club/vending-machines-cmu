@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-01-15",
-  "maintainers": ["r/cmu community"],
+  "lastUpdated": "2025-03-15",
+  "maintainers": ["cmu community"],
   "machines": [
     {
       "id": "gh-3f",
@@ -53,24 +53,12 @@
       "id": "uc-main",
       "name": "UC Lower Level",
       "building": "University Center",
-      "floor": "Lower level, near Entropy",
-      "type": "snack",
-      "lat": 40.4446,
-      "lng": -79.9436,
+      "floor": "Lower level, Andy's Alcove",
+      "type": "combo",
+      "lat": 40.44344936235863,
+      "lng": -79.9421305040206,
       "status": "operational",
-      "hours": "24/7"
-    },
-    {
-      "id": "uc-healthy",
-      "name": "UC Healthy Options",
-      "building": "University Center",
-      "floor": "Ground floor",
-      "type": "healthy",
-      "lat": 40.4448,
-      "lng": -79.9435,
-      "status": "operational",
-      "hours": "7am–11pm",
-      "notes": "Protein bars, nuts, low-sugar drinks"
+      "hours": "-"
     },
     {
       "id": "doherty-b",
