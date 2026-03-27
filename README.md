@@ -56,7 +56,7 @@ To deploy to GitHub Pages:
 
 ## License
 
-MIT — fork it, clone it for your own campus, use it however.
+just fork it, clone it for your own campus, use it however.
 
 ---
 
