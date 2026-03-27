@@ -76,7 +76,6 @@ The easiest way to get lat/lng:
 2. Right-click the exact spot → click the coordinates that appear
 3. They're copied to your clipboard!
 
-For CMU buildings, you can also use the [CMU Campus Map](https://www.cmu.edu/about/visit/campus-map.html).
 
 ---
 
