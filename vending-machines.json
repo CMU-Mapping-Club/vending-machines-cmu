@@ -3,25 +3,25 @@
   "maintainers": ["r/cmu community"],
   "machines": [
     {
-      "id": "gh-1f",
-      "name": "Gates Hillman 1st Floor",
+      "id": "gh-3f",
+      "name": "Gates Hillman 3rd Floor",
       "building": "Gates Hillman Complex",
-      "floor": "1st floor, near main entrance",
-      "type": "combo",
-      "lat": 40.4437,
-      "lng": -79.9456,
+      "floor": "3rd floor",
+      "type": "snack",
+      "lat": 40.44337131961595,
+      "lng": -79.94448181432963,
       "status": "operational",
       "hours": "24/7",
-      "notes": "Accepts credit cards and CMU ID"
+      "notes": "-"
     },
     {
-      "id": "gh-cafe",
-      "name": "Gates Hillman Café Area",
+      "id": "gh-6f",
+      "name": "Gates Hillman 6th fl",
       "building": "Gates Hillman Complex",
-      "floor": "Ground floor, café",
-      "type": "drink",
-      "lat": 40.4435,
-      "lng": -79.9454,
+      "floor": "6th fl",
+      "type": "snack",
+      "lat": 40.44337131961595,
+      "lng": -79.94448181432963,
       "status": "operational",
       "hours": "24/7",
       "notes": "Coffee and cold drinks"
