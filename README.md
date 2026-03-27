@@ -2,7 +2,7 @@
 
 > A community-maintained map of vending machines on Carnegie Mellon University's Pittsburgh campus.
 
-**Live site:** https://YOUR_USERNAME.github.io/cmu-vending-map
+**Live site:** https://CMU-Mapping-Club.github.io/cmu-vending-map
 
 ---
 
@@ -33,7 +33,7 @@ The entire dataset is one file: [`vending-machines.json`](./vending-machines.jso
 ## Deploying your own
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/cmu-vending-map
+git clone https://github.com/CMU-Mapping-Club/cmu-vending-map
 cd cmu-vending-map
 # Open index.html in a browser - it works locally too!
 ```
@@ -42,7 +42,7 @@ To deploy to GitHub Pages:
 1. Push to GitHub
 2. Go to repo **Settings → Pages**
 3. Set source to **Deploy from branch: main / (root)**
-4. Done — live at `https://YOUR_USERNAME.github.io/cmu-vending-map`
+4. Done — live at `https://CMU-Mapping-Club.github.io/cmu-vending-map`
 
 ## Tech stack
 
