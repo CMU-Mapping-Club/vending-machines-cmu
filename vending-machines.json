@@ -27,27 +27,27 @@
       "notes": "Coffee and cold drinks"
     },
     {
-      "id": "weh-3f",
-      "name": "Wean Hall 3rd Floor",
+      "id": "weh-2f",
+      "name": "Wean Hall Fl 2",
       "building": "Wean Hall",
-      "floor": "3rd floor, near elevators",
-      "type": "snack",
-      "lat": 40.4431,
-      "lng": -79.9449,
+      "floor": "2nd floor, near elevators",
+      "type": "combo",
+      "lat": 40.4426663682563,
+      "lng": -79.94589236425514,
       "status": "operational",
       "hours": "24/7"
     },
     {
-      "id": "weh-5f",
-      "name": "Wean Hall 5th Floor",
+      "id": "weh-7f",
+      "name": "Wean Hall 7th Floor",
       "building": "Wean Hall",
-      "floor": "5th floor",
-      "type": "combo",
-      "lat": 40.4432,
-      "lng": -79.9447,
+      "floor": "7th floor, close to physics lounge",
+      "type": "snack",
+      "lat": 40.4426663682563,
+      "lng": -79.94589236425514,
       "status": "limited",
       "hours": "24/7",
-      "notes": "Restocked Mondays and Thursdays"
+      "notes": "-"
     },
     {
       "id": "uc-main",
