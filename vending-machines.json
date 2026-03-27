@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-03-15",
+  "lastUpdated": "See in Repo",
   "maintainers": ["cmu community"],
   "machines": [
     {
@@ -61,27 +61,27 @@
       "hours": "-"
     },
     {
-      "id": "doherty-b",
-      "name": "Doherty Hall Basement",
+      "id": "doherty-a-east",
+      "name": "Doherty Hall A level - east stairs",
       "building": "Doherty Hall",
-      "floor": "Basement",
+      "floor": "A level",
       "type": "drink",
-      "lat": 40.4428,
-      "lng": -79.9432,
+      "lat": 40.44236523500048,
+      "lng": -79.94449656072504,
       "status": "operational",
       "hours": "24/7"
     },
     {
-      "id": "doherty-2f",
-      "name": "Doherty Hall 2nd Floor",
+      "id": "doherty-a-middle",
+      "name": "Doherty Hall A level - middle stairs",
       "building": "Doherty Hall",
-      "floor": "2nd floor, main corridor",
+      "floor": "A level",
       "type": "combo",
-      "lat": 40.4426,
-      "lng": -79.9430,
+      "lat": 40.44236523500048,
+      "lng": -79.94449656072504,
       "status": "unknown",
       "hours": "Unknown",
-      "notes": "Last reported working Jan 2025 — please update!"
+      "notes": "-"
     },
     {
       "id": "hh-1f",
@@ -91,17 +91,6 @@
       "type": "drink",
       "lat": 40.4443,
       "lng": -79.9464,
-      "status": "operational",
-      "hours": "24/7"
-    },
-    {
-      "id": "purnell-b",
-      "name": "Purnell Basement",
-      "building": "Purnell Center",
-      "floor": "Basement",
-      "type": "snack",
-      "lat": 40.4440,
-      "lng": -79.9441,
       "status": "operational",
       "hours": "24/7"
     },
