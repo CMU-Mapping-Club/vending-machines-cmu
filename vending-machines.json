@@ -84,15 +84,37 @@
       "notes": "-"
     },
     {
-      "id": "hh-1f",
-      "name": "Hamburg Hall Lobby",
+      "id": "hbh-a-west",
+      "name": "Hamburg Hall A level - west (dew)",
       "building": "Hamburg Hall",
-      "floor": "1st floor lobby",
+      "floor": "A level",
       "type": "drink",
-      "lat": 40.4443,
-      "lng": -79.9464,
+      "lat": 40.44427806341684,
+      "lng": -79.94555220649606,
       "status": "operational",
-      "hours": "24/7"
+      "hours": "-"
+    },
+        {
+      "id": "hbh-a-center",
+      "name": "Hamburg Hall A level - center (coffee)",
+      "building": "Hamburg Hall",
+      "floor": "A level",
+      "type": "drink",
+      "lat": 40.44427806341684,
+      "lng": -79.94555220649606,
+      "status": "operational",
+      "hours": "-"
+    },
+        {
+      "id": "hbh-a-center",
+      "name": "Hamburg Hall A level - east (main)",
+      "building": "Hamburg Hall",
+      "floor": "A level",
+      "type": "drink",
+      "lat": 40.44427806341684,
+      "lng": -79.94555220649606,
+      "status": "operational",
+      "hours": "-"
     },
     {
       "id": "cyert-2f",
