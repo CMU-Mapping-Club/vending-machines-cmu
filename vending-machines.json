@@ -117,22 +117,22 @@
       "hours": "-"
     },
     {
-      "id": "cyert-2f",
-      "name": "Cyert Hall 2nd Floor",
+      "id": "cyert-a",
+      "name": "Cyert Hall A level - Forbes entrance",
       "building": "Cyert Hall",
-      "floor": "2nd floor",
+      "floor": "A level",
       "type": "combo",
-      "lat": 40.4453,
-      "lng": -79.9428,
+      "lat": 40.444415465838354,
+      "lng": -79.94372343127861,
       "status": "operational",
       "hours": "24/7",
-      "notes": "Near the collaborative workspace"
+      "notes": "-"
     },
     {
-      "id": "nsh-atrium",
-      "name": "Newell-Simon Hall Atrium",
+      "id": "nsh-1",
+      "name": "Newell-Simon Hall 1",
       "building": "Newell-Simon Hall",
-      "floor": "Ground floor, atrium",
+      "floor": "1st Fl",
       "type": "combo",
       "lat": 40.4434,
       "lng": -79.9460,
@@ -140,15 +140,15 @@
       "hours": "24/7"
     },
     {
-      "id": "tepper-2f",
-      "name": "Tepper 2nd Floor",
+      "id": "tepper-1f",
+      "name": "Tepper 1st Floor",
       "building": "Tepper School of Business",
-      "floor": "2nd floor, near study rooms",
-      "type": "healthy",
-      "lat": 40.4424,
-      "lng": -79.9421,
+      "floor": "1st",
+      "type": "combo",
+      "lat": 40.44490282044111,
+      "lng": -79.94547912834445,
       "status": "operational",
-      "hours": "7am–10pm"
+      "hours": "-"
     }
   ]
 }
