@@ -8,17 +8,13 @@
 
 ## About
 
-Born from the r/cmu posts asking "where are the vending machines?" — this is an open, community-editable map so the answer is always findable and always up to date.
-
-- **Zero infrastructure cost** — static site on GitHub Pages, data in a JSON file
-- **No account needed to view**, GitHub account needed to contribute
-- **Works on mobile** — find the nearest machine on the go
+Born from the r/cmu posts asking ["where are the vending machines?"](https://www.reddit.com/r/cmu/comments/2m7f9d/where_are_vending_machines_on_campus/?share_id=mkrj1mqg-X0kUNFp9tkdz&utm_content=1&utm_medium=android_app&utm_name=androidcss&utm_source=share&utm_term=1) — this is an open, community-editable map so the answer is always findable and always up to date.
 
 ## Features
 
-- Interactive dark-themed map (OpenStreetMap + CARTO tiles, no API key needed)
+- Interactive dark-themed map (OpenStreetMap + CARTO tiles)
 - Search by building or floor
-- Filter by type: Snacks, Drinks, Combo, Healthy
+- Filter by type: Snacks, Drinks, Combo
 - Status indicators: Operational / Limited stock / Unknown
 - Every popup links directly to the GitHub edit page
 
@@ -53,10 +49,6 @@ To deploy to GitHub Pages:
 | Map library | Leaflet.js | Free / MIT |
 | Database | `vending-machines.json` in this repo | Free |
 | CI/CD | GitHub Actions (optional) | Free |
-
-## License
-
-just fork it, clone it for your own campus, use it however.
 
 ---
 
