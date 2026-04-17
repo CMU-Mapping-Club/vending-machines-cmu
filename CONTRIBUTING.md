@@ -1,6 +1,6 @@
 # Contributing to CMU Vending Map 🤝
 
-Thanks for helping keep this map accurate! All the vending machine data lives in a single JSON file — no coding knowledge required to add or update a machine.
+Thanks for helping keep this map accurate! All the vending machine data lives in a single JSON file — no coding knowledge required to add or update a machine. Just edit the JSON. That's it. 
 
 ## How to add or update a machine
 
