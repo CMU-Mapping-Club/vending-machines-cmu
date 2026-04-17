@@ -149,6 +149,116 @@
       "lng": -79.94547912834445,
       "status": "operational",
       "hours": "-"
-    }
+    },
+    {
+      "id": "mmch-a",
+      "name": "Margaret Morrison A Level - East",
+      "building": "Margaret Morrison Carnegie Hall",
+      "floor": "A",
+      "type": "combo",
+      "lat": 40.44199156250816,
+      "lng": -79.94131410982247,
+      "status": "operational",
+      "hours": "24/7"
+    },
+    {
+      "id": "highmark-1f",
+      "name": "Highmark 1st Floor - North",
+      "building": "Highmark Center",
+      "floor": "1st, near Spiritual Rooms",
+      "type": "healthy",
+      "lat": 40.44141770568453,
+      "lng": -79.9411739636242,
+      "status": "operational",
+      "hours": "7am-2am"
+    },
+    {
+      "id": "cfa-a",
+      "name": "CFA A Level - Middle of Hallway",
+      "building": "College of Fine Arts",
+      "floor": "A",
+      "type": "combo",
+      "lat": 40.4415610613942, 
+      "lng": -79.94282821100954,
+      "status": "unknown",
+      "hours": "24/7"
+    },
+    {
+      "id": "hunt-a",
+      "name": "Hunt Library A Level - South",
+      "building": "Hunt Library",
+      "floor": "A",
+      "type": "combo",
+      "lat": 40.44107306273167, 
+      "lng": -79.94389999287408,
+      "status": "unknown",
+      "hours": "8am-3am"
+    },
+    {
+      "id": "baker-1r",
+      "name": "Baker Hall 1st Floor - Northeast Entrance",
+      "building": "Baker Hall",
+      "floor": "1st, entrance opposite of Doherty",
+      "type": "combo",
+      "lat": 40.44150975020662, 
+      "lng": -79.94471118332166,
+      "status": "operational",
+      "hours": "24/7"
+    },
+    {
+      "id": "baker-1l",
+      "name": "Baker Hall 1st Floor - Northwest Entrance",
+      "building": "Baker Hall",
+      "floor": "1st, entrance opposite of Wean",
+      "type": "combo",
+      "lat": 40.44169985914474, 
+      "lng": -79.94559432431,
+      "status": "operational",
+      "hours": "24/7"
+    },
+    {
+      "id": "mmcommons-1",
+      "name": "Margaret Morrison Commons",
+      "building": "Hamerschlag House",
+      "floor": "1st, in the back hallway",
+      "type": "combo",
+      "lat": 40.44134531024264,
+      "lng": -79.93894605833944,
+      "status": "operational",
+      "hours": "7am-2am"
+    },
+    {
+      "id": "5thavecommons-1",
+      "name": "Fifth Ave Commons",
+      "building": "Fifth and Clyde House",
+      "floor": "1st, on the east side",
+      "type": "combo",
+      "lat": 40.44740517795932, 
+      "lng": -79.94591962067159,
+      "status": "operational",
+      "hours": "7am-2am"
+    },
+    {
+      "id": "reson5th-1",
+      "name": "Residence on Fifth - 1st Floor",
+      "building": "Residence on Fifth",
+      "floor": "1st, near Food Pantry",
+      "type": "combo",
+      "lat": 40.44693074828637, 
+      "lng": -79.94667321927116,
+      "status": "unknown",
+      "hours": "-"
+    },
+    {
+      "id": "uc-3",
+      "name": "UC 3rd floor - North",
+      "building": "University Center",
+      "floor": "3rd Floor, in Tartan Collaborative Commons",
+      "type": "combo",
+      "lat": 40.44391250070065, 
+      "lng": -79.94204405588948,
+      "status": "operational",
+      "hours": "24/7"
+    },
   ]
 }
