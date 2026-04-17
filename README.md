@@ -4,6 +4,8 @@
 
 **Live site:** https://cmu-mapping-club.github.io/vending-machines-cmu/ 
 
+![Alt text](Screenshot%202026-04-17%20090550.png)
+
 ---
 
 ## About
